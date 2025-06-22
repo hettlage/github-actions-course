@@ -7,4 +7,4 @@ jobs:
     steps:
       - name: Show the trigger
         run: |
-          echo "Event triggering this workflow: ${{ github.event_name }}"
+          echo "Event triggering this workflow...: ${{ github.event_name }}"
