@@ -1,0 +1,13 @@
+name: 04 - Using Actions
+on: push
+jobs:
+  build:
+    name: Build App
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+      - name: Print Folders
+        run: tree
+
+
