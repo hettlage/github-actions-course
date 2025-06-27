@@ -1,10 +1,6 @@
 name: Filters and Activity Types II
 on:
-  pull_request:
-    types:
-      - closed
-    branches:
-      - main
+  workflow_dispatch:
 jobs:
   echo-essage:
     name: Echo a Message
