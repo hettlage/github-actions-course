@@ -8,10 +8,16 @@ on:
         required: true
         default: false
         description: Running in debug mode?
+env:
+  MY_WORKFLOW_VAR: workflow
+  MY_OVERWRITTEN_VAR: workflow
 jobs:
   echo-data:
     name: Echo Data
     runs-on: ubuntu-latest
+    env:
+      MY_JOB_VAR: job
+      MY_OVERWRITTEN_VAR: job
     steps:
       - name: Display information
         run: |
@@ -25,3 +31,13 @@ jobs:
       - name: Retrieve variable
         run: |
           echo "MY_VAR: ${{ vars.MY_VAR }}"
+      - name: Print env variables
+        env:
+          MY_OVERWRITTEN_VAR: step
+        run: |
+          echo "Workflow env: ${{ env.MY_WORKFLOW_VAR }}"
+          echo "Overwritten env: ${{ env.MY_OVERWRITTEN_VAR }}"
+      - name: Print env variables again
+        run: |
+          echo "Workflow env: ${{ env.MY_WORKFLOW_VAR }}"
+          echo "Overwritten env: ${{ env.MY_OVERWRITTEN_VAR }}"
