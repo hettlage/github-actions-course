@@ -47,4 +47,4 @@ jobs:
     steps:
       - name: Use bash env variable
         run: |
-          echo "MY VAR: ${MY_VAR}"
+          echo "MY VAR: ${MY_WORKFLOW_VAR}"
