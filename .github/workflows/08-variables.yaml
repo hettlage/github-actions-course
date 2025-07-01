@@ -1,6 +1,15 @@
 name: 08 - Variables
 on:
   workflow_dispatch:
+    inputs:
+      environment:
+        description: Environment
+        required: true
+        default: prod
+        type: choice
+        options:
+          - prod
+          - staging
 env:
   WORKFLOW_VAR: "I am a workflow env var."
   OVERWRITTEN: "I will be overwritten."
@@ -38,7 +47,7 @@ jobs:
   echo-prod:
     name: Echo prod values
     runs-on: ubuntu-latest
-    environment: prod
+    environment: ${{ inputs.environment }}
     steps:
       - name: Echo values
         run: |
