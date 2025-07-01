@@ -51,5 +51,5 @@ jobs:
     steps:
       - name: Echo undefined variables
         run: |
-          echo "Undefined var: ${{ env.UNDEFINED_VAR }}"
+          echo "Undefined var: ${{ env.UNDEFINED_VAR_WITH_DEFAULT }}"
       
