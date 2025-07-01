@@ -34,7 +34,7 @@ jobs:
     steps:
       - name: Print variables
         run: |
-          echo "Repo var: ${{ vars.REPO_VAR }}
+          echo "Repo var: ${{ vars.REPO_VAR }}"
   echo-prod:
     name: Echo prod values
     runs-on: ubuntu-latest
