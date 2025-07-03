@@ -7,6 +7,11 @@ on:
         required: true
         default: false
         description: Pass unit tests
+      continue-on-error:
+        type: boolean
+        required: true
+        default: false
+        description: Continue on error
 jobs:
   lint-build:
     name: lint-build
@@ -17,6 +22,7 @@ jobs:
           echo "Lint and build"
   unit-tests:
     name: unit-tests
+    continue-on-error: ${{ inputs.continue-on-error }}
     runs-on: ubuntu-latest
     steps:
       - name: Running unit tests
