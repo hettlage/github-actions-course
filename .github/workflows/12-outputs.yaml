@@ -35,11 +35,11 @@ jobs:
     steps:
       - name: Print Output
         run: |
-          echo "${{  needs.build.outputs.output1 }}
+          echo "${{  needs.build.outputs.output1 }}"
       - name: Testing
         if: ${{ needs.build.outputs.build-status == 'success' }}
         run: |
-          echo Testing...
+          echo "Testing..."
       - name: Deploy
         run: |
           echo "Debugging..."
