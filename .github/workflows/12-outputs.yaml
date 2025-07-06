@@ -30,6 +30,7 @@ jobs:
     steps:
       - name: Deploy
         run: |
+          echo "Debugging..."
           cat << EOF
             ${{ toJSON(needs.build.outputs) }}
           EOF
