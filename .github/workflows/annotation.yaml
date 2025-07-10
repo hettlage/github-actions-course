@@ -8,4 +8,4 @@ jobs:
       - run: |
           echo "Step 1"
       - run: |
-          echo "::notice title=This is an annotation."
+          echo "::notice title=Annotated::This is an annotation."
