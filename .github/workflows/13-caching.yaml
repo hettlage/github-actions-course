@@ -16,6 +16,8 @@ on:
           - 20.x
           - 21.x
         description: Node version
+env:
+  REACT_APP_DIR: 13-caching/react-app
 jobs:
   install-deps:
     name: Install dependencies
@@ -32,16 +34,16 @@ jobs:
       - id: cache-key
         name: Cache
         run: |
-          echo "CACHE_KEY=deps-node-modules-${{ hashFiles('13-caching/react-app/package-lock.json') }}" >> "$GITHUB_OUTPUT"
+          echo "CACHE_KEY=deps-node-modules-${{ hashFiles('${{ env.REACT_APP_DIR }}/package-lock.json') }}" >> "$GITHUB_OUTPUT"
       - id: cache
         name: Download cached dependencies
         uses: actions/cache@v3
         with:
           key: ${{ steps.cache-key.outputs.CACHE_KEY }}
-          path: "13-caching/react-app/node_modules"
+          path: "${{ env.REACT_APP_DIR }}/node_modules"
       - name: Install dependencies
         if: ${{ steps.cache.outputs.cache-hit != 'true' }}
-        working-directory: 13-caching/react-app
+        working-directory: ${{ env.REACT_APP_DIR }}
         run: |
           npm ci
   linting:
@@ -50,7 +52,7 @@ jobs:
     needs: install-deps
     defaults:
       run:
-        working-directory: 13-caching/react-app
+        working-directory: ${{ env.REACT_APP_DIR }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -62,7 +64,7 @@ jobs:
         uses: actions/cache@v3
         with:
           key: ${{ needs.install-deps.outputs.cache-key }}
-          path: 13-caching/react-app
+          path: ${{ env.REACT_APP_DIR }}/node_modules
       - name: Test
         run:
           npm run test
@@ -75,7 +77,7 @@ jobs:
     needs: install-deps
     defaults:
       run:
-        working-directory: 13-caching/react-app
+        working-directory: ${{ env.REACT_APP_DIR }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -87,7 +89,7 @@ jobs:
         name: Download cached dependencies
         uses: actions/cache@v3
         with:
-          path: "13-caching/react-app/node_modules"
+          path: "${{ env.REACT_APP_DIR }}/node_modules"
           key: ${{ needs.install-deps.outputs.cache-key }}
       - name: Run tests
         run: |
