@@ -16,7 +16,7 @@ jobs:
       - name: Install dependencies
         if: ${{ steps.cache.outputs.cache-hit != 'true' }}
         run: |
-          npm run ci
+          npm ci
       - name: Unit tests
         run: |
           npm run test
