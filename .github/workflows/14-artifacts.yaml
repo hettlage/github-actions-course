@@ -30,6 +30,7 @@ jobs:
           path: ${{ env.WORKING_DIRECTORY }}/build
   deploy:
     name: Deploy
+    needs: test-build
     runs-on: ubuntu-latest
     steps:
       - name: Download artifact
