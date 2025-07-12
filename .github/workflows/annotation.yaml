@@ -1,0 +1,11 @@
+name: Annotation
+on: pull_request
+jobs:
+  annotate:
+    name: Annotate
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "Step 1"
+      - run: |
+          echo "This is an annotation." >> $GITHUB_STEP_SUMMARY
