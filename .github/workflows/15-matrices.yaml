@@ -6,7 +6,7 @@ jobs:
     name: Check compatibility with ${{ matrix.os }} and Node version ${{ matrix.node-version }}
     runs-on: ${{ matrix.os }}
     strategy:
-      fail-fast: false
+      fail-fast: true
       matrix:
         os: [ubuntu-latest, windows-latest]
         node-version: [18.x, 20.x, 21.x]
