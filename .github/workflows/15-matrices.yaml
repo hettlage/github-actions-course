@@ -48,6 +48,9 @@ jobs:
             opacity: 100
           - color: red
             shape: triangle
+          - color: green
+            shape: circle
+            size: medium
         exclude:
           - color: green
             shape: circle
