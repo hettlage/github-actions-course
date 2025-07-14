@@ -21,7 +21,7 @@ jobs:
     name: Deploy to prod
     environment: prod
     env:
-      my-env-value: ${{ var.MY_ENV_VALUE || 'default value' }}
+      my-env-value: ${{ vars.MY_ENV_VALUE || 'default value' }}
     runs-on: ubuntu-latest
     steps:
       - name: Deploy to prod
