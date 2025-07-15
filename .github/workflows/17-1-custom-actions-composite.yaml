@@ -11,7 +11,7 @@ on:
           - dev
         description: Target environment
 env:
-  working-directory: 17-custom-actions
+  working-directory: 17-custom-actions/react-app
 jobs:
   build:
     name: Build
