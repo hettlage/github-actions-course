@@ -11,7 +11,7 @@ inputs:
     default: .
   target-env:
     required: false
-    description: "dev" or "prod". Controls whether dev dependencies are installed
+    description: dev or prod. Controls whether dev dependencies are installed
     default: dev
 runs:
   using: composite
@@ -30,5 +30,5 @@ runs:
       shell: bash
       working-directory: ${{ inputs.working-dir }}
       run: |
-        npm ci ${{ inputs.target-env == 'dev' && '--omit=dev' || ' ' }}
+        npm ci ${{ inputs.target-env == 'dev' && '--omit=dev' || '' }}
         
