@@ -9,6 +9,10 @@ inputs:
     required: false
     description: The working directory of the application
     default: .
+  target-env:
+    required: false
+    description: "dev" or "prod". Controls whether dev dependencies are installed
+    default: dev
 runs:
   using: composite
   steps:
@@ -19,12 +23,12 @@ runs:
     - id: cache
       uses: actions/cache@v3
       with:
-        key: nd-${{ hashFiles(inputs.working-dir) }}
+        key: nd-${{ inputs.target-env }}-${{ hashFiles(inputs.working-dir) }}
         path: ${{ inputs.working-dir }}/node_modules
     - name: Install dependencies
       if: ${{ steps.cache.outputs.cache-hit != 'true' }}
       shell: bash
       working-directory: ${{ inputs.working-dir }}
       run: |
-        npm ci
+        npm ci ${{ inputs.target-env == 'dev' && '--omit=dev' || '' }}
         
