@@ -24,7 +24,7 @@ async function run() {
     return;
   }
 
-  core.info(`Base branch: ${baseBranch}`);
+  core.info(`Base branch: ${baseBranch} ${validateBranchName(baseBranch)}`);
   core.info(`Target branch: ${targetBranch}`);
   core.info(`Working directory: ${workingDirectory}`);
 
