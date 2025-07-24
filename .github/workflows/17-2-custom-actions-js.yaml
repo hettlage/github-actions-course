@@ -18,6 +18,9 @@ on:
         description: Whether the output debug messages to the console.
         type: boolean
         required: true
+permissions:
+  contents: write
+  pull-requests: write
 
 jobs:
   dependency-update:
@@ -34,3 +37,4 @@ jobs:
           working-directory: ${{ inputs.working-directory }}
           debug: ${{ inputs.debug }}
           gh-token: ${{ secrets.GITHUB_TOKEN }}
+
