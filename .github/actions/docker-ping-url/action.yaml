@@ -4,7 +4,7 @@ inputs:
   url:
     required: true
     description: URL to ping
-  max_trials:
+  max-trials:
     required: false
     description: Maximum number of trials until action fails.
     default: "10"
