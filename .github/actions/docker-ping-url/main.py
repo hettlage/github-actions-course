@@ -10,7 +10,9 @@ def ping_url(url, delay, max_trials) -> bool:
         response = requests.get(url)
         if response.ok:
             return True
+        print(f"Pinging failed. Trying again {delay} seconds...")
         sleep(delay)
+        trial += 1
     return False
 
 
