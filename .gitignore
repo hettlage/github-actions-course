@@ -2,3 +2,4 @@ node_modules/
 !.github/**/node_modules/
 .idea/
 *iml
+venv/
