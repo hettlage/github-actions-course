@@ -1,8 +1,9 @@
 FROM python:alpine3.19
 
-COPY requirements.txt /requirements.txt
+WORKDIR /app
+COPY requirements.txt .
 RUN pip install -r requirements.txt
 
-COPY main.py /main.py
+COPY main.py .
 
-CMD ["python", "/main.py"]
+CMD ["python", "/app/main.py"]
